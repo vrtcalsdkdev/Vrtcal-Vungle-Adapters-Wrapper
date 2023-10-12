@@ -6,6 +6,7 @@ class VrtcalVungleAdaptersWrapper: NSObject, AdapterWrapperProtocol {
     
     var appLogger: Logger
     var sdkEventsLogger: Logger
+    var sdk = SDK.vungle
     var delegate: AdapterWrapperDelegate
     
     required init(
@@ -19,8 +20,6 @@ class VrtcalVungleAdaptersWrapper: NSObject, AdapterWrapperProtocol {
     }
     
     func initializeSdk() {
-        appLogger.log()
-        
         do {
             VungleSDK.shared().delegate = self
             // Note: This is TwitMore's appId
@@ -32,25 +31,15 @@ class VrtcalVungleAdaptersWrapper: NSObject, AdapterWrapperProtocol {
     }
     
     func handle(vrtcalAsSecondaryConfig: VrtcalAsSecondaryConfig) {
-        
-        switch vrtcalAsSecondaryConfig.placementType {
-                
-            case .banner:
-                appLogger.log()
-                
-            case .interstitial:
-                appLogger.log()
-                
-            case .rewardedVideo:
-                sdkEventsLogger.log()
-                
-            case .showDebugView:
-                sdkEventsLogger.log()
-        }
+        sdkEventsLogger.log("Vungle does not support Vungle-As-Primary mediation.")
     }
     
     func showInterstitial() -> Bool {
         false
+    }
+    
+    func destroyInterstitial() {
+
     }
 }
 
