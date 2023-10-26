@@ -30,7 +30,7 @@ class VrtcalVungleAdaptersWrapper: NSObject, AdapterWrapperProtocol {
         }
     }
     
-    func handle(vrtcalAsSecondaryConfig: VrtcalAsSecondaryConfig) {
+    func handle(adTechConfig: AdTechConfig) {
         sdkEventsLogger.log("Vungle does not support Vungle-As-Primary mediation.")
     }
     
